@@ -10,7 +10,7 @@ a {
 
 a:link {
   color: #000;
-  border-bottom: 0.05em solid #ff0000;
+  border-bottom: 0.05em solid #000099;
 }
 
 a:visited {
@@ -19,13 +19,13 @@ a:visited {
 }
 
 a:hover {
-  color: #29563d;
-  border-bottom: 0.05em solid #000099;
+  color: #374052;
+  border-bottom: 0.05em solid rgb(66, 66, 87);
 }
 
 .repo_card {
-  box-shadow: 0.1em 0.1em 0.7em #b0b0b0;
-  border-radius: 0.3em;
+  box-shadow: 0.1em 0.1em 0.5em #d0d0d0;
+  border-radius: 0.2em;
   padding: 0.7rem;
   margin-left: auto;
   margin-right: auto;
@@ -34,11 +34,20 @@ a:hover {
   background-color: #f8f8f8;
   width: 60%;
   height: 3em;
+  flex-direction: row;
+  display: flex;
 }
 
 .repo_card_header {
   font-size: larger;
-  margin: 0.5em;
+  margin-top: 0.6rem;
+  margin-left: 1rem;
+  padding: 0.2rem;
+  flex-grow: 1;
+}
+.repo_card_header:hover{
+  color: #000;
+  border-bottom: none;
 }
 .repo-name {
   padding-left: 20%;
@@ -49,6 +58,26 @@ a:hover {
   color: #f8f8f8;
   font-size: 3rem;
   width: 100%;
-  padding: 1.5rem;
-  box-shadow: 0.1rem 0.1rem 0.5rem #b0b0b0;
+  padding: 2rem;
+  box-shadow: 0.1rem 0.1rem 0.4rem rgb(196, 196, 196);
+  margin-bottom: 0.7rem;
+}
+
+
+.repo_link{
+  color: #d55;
+  float: right;
+  background-color: #e0e0e0;
+  padding: 0.3rem;
+  border-radius: 0.2em;
+  vertical-align: middle;
+  font-size: medium;
+  margin-top: 0.7rem;
+  margin-right: 1rem;
+  height: 1em;
+}
+
+.repo_link:hover{
+  color: #b22;
+  border-bottom: none;
 }

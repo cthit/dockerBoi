@@ -8,4 +8,5 @@ authors = [
 
 [dependencies]
 seed = "0.8.0"
+web-sys = { version = "0.3", features = ["Clipboard"] }
 serde = { version = "1", features = ["derive"] }
