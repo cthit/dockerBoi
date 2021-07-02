@@ -1,0 +1,54 @@
+body {
+  font-family: Ubuntu;
+  background-color: #f2f2f2;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:link {
+  color: #000;
+  border-bottom: 0.05em solid #ff0000;
+}
+
+a:visited {
+  color: #000;
+  border-bottom: 0.05em solid #b3b3b3;
+}
+
+a:hover {
+  color: #29563d;
+  border-bottom: 0.05em solid #000099;
+}
+
+.repo_card {
+  box-shadow: 0.1em 0.1em 0.7em #b0b0b0;
+  border-radius: 0.3em;
+  padding: 0.7rem;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  background-color: #f8f8f8;
+  width: 60%;
+  height: 3em;
+}
+
+.repo_card_header {
+  font-size: larger;
+  margin: 0.5em;
+}
+.repo-name {
+  padding-left: 20%;
+}
+
+.header {
+  background-color: #00babe;
+  color: #f8f8f8;
+  font-size: 3rem;
+  width: 100%;
+  padding: 1.5rem;
+  box-shadow: 0.1rem 0.1rem 0.5rem #b0b0b0;
+}

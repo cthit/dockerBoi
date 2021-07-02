@@ -1,0 +1,11 @@
+[package]
+name = "frontend"
+version = "0.1.0"
+edition = "2018"
+authors = [
+    "Joakim Hulthe <joakim@hulthe.net>"
+]
+
+[dependencies]
+seed = "0.8.0"
+serde = { version = "1", features = ["derive"] }
