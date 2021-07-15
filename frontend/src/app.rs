@@ -1,6 +1,6 @@
 use crate::page::{self, route, Page, Route};
 use seed::prelude::*;
-use seed::{log, C};
+use seed::{log, C, a, div, attrs};
 
 pub struct Model {
     route: Route,
@@ -34,6 +34,7 @@ pub fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
             model.route = route;
             model.page = match &model.route {
                 Route::NotFound => Page::NotFound,
+                Route::Help => Page::Help,
                 Route::RepoList => {
                     Page::RepoList(page::repo_list::init(&mut orders.proxy(Msg::RepoListMsg)))
                 }
@@ -60,10 +61,27 @@ pub fn update(msg: Msg, model: &mut Model, orders: &mut impl Orders<Msg>) {
 
 pub fn view(model: &Model) -> Vec<Node<Msg>> {
     vec![
-        seed::div![C!["header"], ["dockerBoi"]],
+        seed::div![
+            C!["header"],
+            a![
+                C!["header_text"],
+                "dockerBoi", 
+                attrs! {
+                    At::Href => "/"
+                },
+            ]
+        ],
+        seed::a![
+            C!["help_button"],
+            attrs! {
+                At::Href => "/help",
+            },
+            "?",
+        ],
         match &model.page {
             Page::Repo(model) => page::repo::view(model).map_msg(Msg::RepoMsg),
             Page::RepoList(model) => page::repo_list::view(model).map_msg(Msg::RepoListMsg),
+            Page::Help => page::help::view(),
             Page::NotFound => seed::h1!["Not Found"],
         },
     ]

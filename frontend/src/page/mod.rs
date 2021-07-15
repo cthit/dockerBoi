@@ -1,5 +1,6 @@
 pub mod repo;
 pub mod repo_list;
+pub mod help;
 
 use crate::registry::RepoName;
 use seed::{log, Url};
@@ -7,6 +8,7 @@ use seed::{log, Url};
 pub enum Page {
     RepoList(repo_list::Model),
     Repo(repo::Model),
+    Help,
     NotFound,
 }
 
@@ -14,6 +16,7 @@ pub enum Page {
 pub enum Route {
     RepoList,
     Repo(RepoName),
+    Help,
     NotFound,
 }
 
@@ -29,6 +32,7 @@ pub fn route(mut url: Url) -> Route {
             namespace: Some(namespace.to_string()),
             name: name.to_string(),
         }),
+        ["help"] => Route::Help,
         _ => Route::NotFound,
     }
 }

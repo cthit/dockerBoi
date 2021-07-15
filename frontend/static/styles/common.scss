@@ -7,20 +7,24 @@ body {
 a {
   text-decoration: none;
 }
-
-a:link {
-  color: #000;
-  border-bottom: 0.05em solid #000099;
-}
-
-a:visited {
-  color: #000;
-  border-bottom: 0.05em solid #b3b3b3;
-}
-
 a:hover {
-  color: #374052;
-  border-bottom: 0.05em solid rgb(66, 66, 87);
+  text-decoration: none;
+
+}
+a:link {
+  text-decoration: none;
+}
+a:active {
+  text-decoration: none;
+
+}
+a:visited { 
+  text-decoration: none;
+
+}
+
+*:focus {
+  outline: none;
 }
 
 .repo_card {
@@ -38,17 +42,22 @@ a:hover {
   display: flex;
 }
 
+.repo_card:focus {
+  box-shadow: 0.1em 0.1em 0.5em #8090a0;
+}
+
 .repo_card_header {
   font-size: larger;
   margin-top: 0.6rem;
   margin-left: 1rem;
   padding: 0.2rem;
   flex-grow: 1;
-}
-.repo_card_header:hover{
   color: #000;
+  text-decoration: none;
   border-bottom: none;
 }
+
+
 .repo-name {
   padding-left: 20%;
 }
@@ -57,27 +66,93 @@ a:hover {
   background-color: #00babe;
   color: #f8f8f8;
   font-size: 3rem;
-  width: 100%;
   padding: 2rem;
   box-shadow: 0.1rem 0.1rem 0.4rem rgb(196, 196, 196);
   margin-bottom: 0.7rem;
+  user-select: none;
+  border-bottom: none;
 }
 
+.header_text {
+  color: #f8f8f8;
+  font-size: 3rem;
+  padding: 2rem;
+  text-decoration: none;
 
-.repo_link{
-  color: #d55;
+}
+.header_text:hover {
+  text-shadow: 0.1rem 0.1rem 0.3rem #07777a;
+}
+
+.header_text:focus {
+  text-shadow: 0.1rem 0.1rem 0.3rem #015e61;
+}
+
+.repo_link {
+  color: #f33;
   float: right;
+  flex-grow: 1;
+  flex-shrink: 1;
+  max-width: 20em;
+  border: solid 1px #bbb;
   background-color: #e0e0e0;
   padding: 0.3rem;
   border-radius: 0.2em;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
   vertical-align: middle;
   font-size: medium;
-  margin-top: 0.7rem;
-  margin-right: 1rem;
-  height: 1em;
+  margin-top: 0.5rem;
+  height: 2em;
 }
 
-.repo_link:hover{
+.repo_link:hover {
   color: #b22;
   border-bottom: none;
+}
+
+.repo_link:focus {
+  border: solid 1px #777;
+}
+
+.copy_button {
+  margin-right: 1rem;
+  font-size: medium;
+  height: 2em;
+  width: 4em;
+  margin-top: 0.5rem;
+  border-radius: 0.2em;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border: solid 1px #bbb;
+  background-color: #f0f0f0;
+}
+
+img {
+  height: 1.5em;
+  object-fit: contain;
+}
+
+.copy_button:focus {
+  border: solid 1px #777;
+}
+
+.help_button{
+  border-radius: 3rem;
+  position: fixed;
+  padding: 0.5rem; 
+  padding-left: 1.6rem;
+  padding-right: 1.6rem;
+  background-color: #f8f8f8;
+  border: solid 0.5rem #00babe;
+  
+  color: #00babe;
+  bottom: 1em;
+  left: 1em;
+  font-size: 3rem;
+  box-shadow: 0.1rem 0.1rem 0.5rem #b0b0b0;
+}
+
+.help_button:hover {
+  box-shadow: 0.1rem 0.1rem 0.5rem #07777a;
 }
