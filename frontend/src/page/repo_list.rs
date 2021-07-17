@@ -37,7 +37,7 @@ pub fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
 pub fn view(model: &Model) -> Node<Msg> {
     let view_card = |name: &RepoName| {
         a![
-            C!["repo_card"],
+            C!["repo_list_card"],
             attrs! {
                 At::Href => match name.namespace {
                     Some(_) => format!("/repo/{}", name),

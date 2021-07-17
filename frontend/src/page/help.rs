@@ -1,7 +1,6 @@
 use seed::prelude::*;
-use seed::{div, C};
-
+use seed::{raw, C, div};
 
 pub fn view<Msg>() -> Node<Msg>{
-    div!["halp"]
+    div![C!["help"], raw![&markdown::to_html(include_str!("help.md"))]]
 }

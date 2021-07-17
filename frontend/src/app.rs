@@ -1,6 +1,6 @@
 use crate::page::{self, route, Page, Route};
 use seed::prelude::*;
-use seed::{log, C, a, div, attrs};
+use seed::{a, attrs, log, C};
 
 pub struct Model {
     route: Route,
@@ -65,7 +65,7 @@ pub fn view(model: &Model) -> Vec<Node<Msg>> {
             C!["header"],
             a![
                 C!["header_text"],
-                "dockerBoi", 
+                "dockerBoi",
                 attrs! {
                     At::Href => "/"
                 },

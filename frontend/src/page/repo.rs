@@ -54,7 +54,7 @@ pub fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
 
 pub fn view(model: &Model) -> Node<Msg> {
     let view_card = |(i, tag): (usize, &Tag)| {
-        let link: String = format!("localhost:8080/{}:{}", model.repo, tag.name);
+        let link: String = format!("docker.chalmers.it/{}:{}", model.repo, tag.name);
         div![
             C!["repo_card"],
             a![C!["repo_card_header"], &tag.name],
