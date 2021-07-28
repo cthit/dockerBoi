@@ -1,6 +1,9 @@
 use seed::prelude::*;
-use seed::{raw, C, div};
+use seed::{div, raw, C};
 
-pub fn view<Msg>() -> Node<Msg>{
-    div![C!["help"], raw![&markdown::to_html(include_str!("help.md"))]]
+pub fn view<Msg>() -> Node<Msg> {
+    div![
+        C!["help", "list"],
+        raw![&markdown::to_html(include_str!("help.md"))]
+    ]
 }

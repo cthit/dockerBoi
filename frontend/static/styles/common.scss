@@ -109,13 +109,14 @@ code {
 
 .repo_search {
   width: 2.5em;
-  margin-left:64%;
+  margin-left:60%;
   margin-right: 20%; 
   top: 1.5rem;
-  font-size: medium;
+  font-size: large;
   padding: 0.5em;
   border: none;
-  box-shadow: 0.1em 0.1em 0.5em #d0d0d0;
+  box-shadow: 0.1em 0.1em 0.3em #08999a;
+  background-color: #f8f8f8;
   border-radius: 0.5em;
   z-index: 2;
   position: fixed;
@@ -123,14 +124,14 @@ code {
 }
 
 .repo_search:hover {
-  box-shadow: 0.1em 0.1em 0.5em #8090a0;
+  box-shadow: 0.1em 0.1em 0.5em #07777a;
 }
 
 .repo_search:focus {
-  box-shadow: 0.1em 0.1em 0.5em #8090a0;
+  box-shadow: 0.1em 0.1em 0.5em #015e61;
   transition: all ease-in-out .2s;
-  width: 35%;
-  margin-left: 32.5%;
+  width: 25%;
+  margin-left: 37.5%;
 }
 .header_text {
   color: #f8f8f8;
