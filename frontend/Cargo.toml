@@ -1,9 +1,10 @@
 [package]
 name = "frontend"
-version = "0.1.0"
+version = "0.1.1"
 edition = "2018"
 authors = [
-    "Joakim Hulthe <joakim@hulthe.net>"
+    "Joakim Hulthe <joakim@hulthe.net>",
+    "Ida Dahl",
 ]
 
 [dependencies]
