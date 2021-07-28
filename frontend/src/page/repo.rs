@@ -3,7 +3,9 @@
 use crate::registry::{self, RepoName};
 use seed::browser::fetch;
 use seed::prelude::*;
-use seed::{div, error, h2, a, C, input, attrs, button, img, span};
+use seed::{a, attrs, button, div, error, h2, img, input, span, C};
+use semver::Version;
+use std::cmp::Ordering;
 
 pub struct Model {
     repo: RepoName,
@@ -21,7 +23,6 @@ pub enum Msg {
     CopyLink(usize, String),
 }
 
-
 fn copy_to_clipboard(text: &str) {
     seed::window().navigator().clipboard().write_text(text);
 }
@@ -34,10 +35,36 @@ pub fn init(repo: RepoName, orders: &mut impl Orders<Msg>) -> Model {
     Model { repo, tags: vec![] }
 }
 
+fn is_latest(a: &str, b: &str) -> Ordering {
+    match (a, b) {
+        ("latest", _) => Ordering::Less,
+        (_, "latest") => Ordering::Greater,
+        _ => Ordering::Equal,
+    }
+}
+
+fn is_version(a: &str, b: &str) -> Ordering {
+    match (Version::parse(a).is_ok(), Version::parse(b).is_ok()) {
+        (true, true) => b.cmp(a),
+        (true, false) => Ordering::Less,
+        (false, true) => Ordering::Greater,
+        _ => Ordering::Equal,
+    }
+}
+
 pub fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
     match msg {
         Msg::FetchedTags(result) => match result {
-            Ok(tags) => model.tags = tags.into_iter().map(|name| Tag {name, copied:false}).collect(),
+            Ok(mut tags) => {
+                tags.sort_by(|a, b| is_latest(a, b).then(is_version(a, b)).then(a.cmp(b)));
+                model.tags = tags
+                    .into_iter()
+                    .map(|name| Tag {
+                        name,
+                        copied: false,
+                    })
+                    .collect()
+            }
             Err(e) => {
                 error!(e);
             }
@@ -45,9 +72,8 @@ pub fn update(msg: Msg, model: &mut Model, _orders: &mut impl Orders<Msg>) {
         Msg::CopyLink(i, link) => {
             copy_to_clipboard(&link);
             for (j, tag) in model.tags.iter_mut().enumerate() {
-               tag.copied = i == j; 
+                tag.copied = i == j;
             }
-            
         }
     }
 }
@@ -69,20 +95,18 @@ pub fn view(model: &Model) -> Node<Msg> {
                 C!["copy_button"],
                 ev(Ev::Click, move |_| Msg::CopyLink(i, link)),
                 if tag.copied {
-                    span!["✔️"]                  
+                    span!["✔️"]
                 } else {
-                    span![
-                        img![
-                            attrs!{ At::Src => "/images/clipboard.svg" },
-                        ],
-                    ]
+                    span![img![attrs! { At::Src => "/images/clipboard.svg" },],]
                 },
             ],
         ]
     };
     div![
-        h2![C!["repo-name"], &model.repo.to_string()],
-        model.tags.iter().enumerate().map(view_card)
-        // Iter<&Tag> -> Iter<(usize, &Tag)>
+        div![
+            C!["list"],
+            h2![C!["repo-name"], &model.repo.to_string()],
+            model.tags.iter().enumerate().map(view_card)
+        ] // Iter<&Tag> -> Iter<(usize, &Tag)>
     ]
 }

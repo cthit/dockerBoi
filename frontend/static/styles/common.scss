@@ -96,17 +96,46 @@ code {
   background-color: #00babe;
   color: #f8f8f8;
   font-size: 3rem;
-  padding: 2rem;
+  padding: 1rem;
   box-shadow: 0.1rem 0.1rem 0.4rem #c4c4c4;
-  margin-bottom: 0.7rem;
   user-select: none;
   border-bottom: none;
+  position: fixed;
+  z-index: 1;
+  margin-top: 0;
+  width: 100%;
+  top: 0;
 }
 
+.repo_search {
+  width: 2.5em;
+  margin-left:64%;
+  margin-right: 20%; 
+  top: 1.5rem;
+  font-size: medium;
+  padding: 0.5em;
+  border: none;
+  box-shadow: 0.1em 0.1em 0.5em #d0d0d0;
+  border-radius: 0.5em;
+  z-index: 2;
+  position: fixed;
+  transition: all ease-in-out .2s;
+}
+
+.repo_search:hover {
+  box-shadow: 0.1em 0.1em 0.5em #8090a0;
+}
+
+.repo_search:focus {
+  box-shadow: 0.1em 0.1em 0.5em #8090a0;
+  transition: all ease-in-out .2s;
+  width: 35%;
+  margin-left: 32.5%;
+}
 .header_text {
   color: #f8f8f8;
   font-size: 3rem;
-  padding: 2rem;
+  padding-left: 2rem;
   text-decoration: none;
 
 }
@@ -187,6 +216,11 @@ img {
   box-shadow: 0.1rem 0.1rem 0.5rem #07777a;
 }
 
+.help_button:focus {
+  box-shadow: 0.1rem 0.1rem 0.5rem #07777a;
+}
+
+
 .help {
   background-color: #f8f8f8;
   width: 50%;
@@ -199,3 +233,7 @@ img {
   box-shadow: 0.1em 0.1em 0.5em #e7e7e7;
 }
 
+.list{
+  margin-top: 6.5rem;
+  z-index: -1;
+}

@@ -3,7 +3,7 @@ use serde::Deserialize;
 use std::fmt::{self, Display, Formatter};
 use std::str::FromStr;
 
-#[derive(Debug, Clone)]
+#[derive(Debug, Clone, PartialEq, Eq, PartialOrd, Ord)]
 pub struct RepoName {
     pub namespace: Option<String>,
     pub name: String,
