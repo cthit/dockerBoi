@@ -5,20 +5,17 @@ FROM rust:1.53 as build
 
 WORKDIR /app
 
-COPY . .
-
 # Add WebAssembly build target
 RUN rustup target add wasm32-unknown-unknown
 
 # Install SPA http server
 RUN cargo install microserver
 
-# Install Trunk with dependencies
-RUN apt-get update && apt-get install -y binaryen
-RUN cargo install wasm-bindgen-cli # TODO: eventually Trunk will automatically install this
+# Install Trunk
 RUN cargo install --locked trunk
 
 # Compile
+COPY . .
 RUN trunk build --release
 
 
